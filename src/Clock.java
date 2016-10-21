@@ -2,22 +2,14 @@
 
 public class Clock {
 
-  private long startTime = -1;
+  private final long startTime;
   
-
-  /**
-  * Constructor currently doesn't do anything.
-  */
-  public Clock() {
-    
-  }
-
 
   /**
   * Sets the real-time equivalent of the start of the simulated work day.
   * Pulls the current system time for use.
   */
-  public void startDay() {
+  public Clock() {
     startTime = System.currentTimeMillis();
   }
 
