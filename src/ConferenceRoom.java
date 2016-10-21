@@ -30,6 +30,11 @@ public class ConferenceRoom {
   * returns true, otherwise it returns false and returns immediately.
   */
   public synchronized boolean arrive(TeamLead lookingFor) {
-    return false;
+    if(owner == null || !owner.equals(lookingFor)) {
+      return false;
+    } else {
+      this.wait();
+      return true;
+    }
   }
 }
