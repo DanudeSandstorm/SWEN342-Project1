@@ -1,4 +1,4 @@
-
+package src;
 
 public class ConferenceRoom {
 
@@ -33,7 +33,10 @@ public class ConferenceRoom {
     if(owner == null || !owner.equals(lookingFor)) {
       return false;
     } else {
-      this.wait();
+      try {
+        this.wait();
+      }
+      catch (InterruptedException e) {}
       return true;
     }
   }

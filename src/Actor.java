@@ -1,4 +1,4 @@
-
+package src;
 
 public abstract class Actor extends Thread {
 
@@ -16,7 +16,7 @@ public abstract class Actor extends Thread {
   * Pops the next task that needs to be done off of the to-do list.
   */
   protected Task nextTask() {
-    
+    return new Task(0, 0);  
   }
 
 

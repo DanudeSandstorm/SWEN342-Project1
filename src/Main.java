@@ -1,6 +1,6 @@
+package src;
 
-
-public class Driver {
+public class Main {
 
 
   public static void main(String[] args) {

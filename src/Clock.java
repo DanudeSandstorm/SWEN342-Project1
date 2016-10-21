@@ -1,4 +1,4 @@
-
+package src;
 
 public class Clock {
 
@@ -33,7 +33,7 @@ public class Clock {
   */
   public String getPrintableTime() { 
     long minutes = getTimePassedMillis()/10;
-    int hours = minutes / 60 + 8;
+    long hours = minutes / 60 + 8;
     minutes = minutes % 60;
 
     //Doesn't print the difference between AM and PM, only work with times
