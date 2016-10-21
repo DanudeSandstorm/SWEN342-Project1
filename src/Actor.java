@@ -1,9 +1,12 @@
 package src;
 
+import java.util.List;
+import java.util.ArrayList;
+
 public abstract class Actor extends Thread {
 
+  private List todo;
   
-
   /**
   * Adds a Task to the to-do list and keeps the list sorted.
   */
