@@ -2,14 +2,24 @@ package src;
 
 public class Clock {
 
-  private final long startTime;
+  private long startTime;
   
 
   /**
-  * Sets the real-time equivalent of the start of the simulated work day.
-  * Pulls the current system time for use.
+  * Constructor sets the time to the current system time.
+  * The day will be more accurate if startClock is called right before starting
+  * the actor threads
   */
   public Clock() {
+    startTime = System.currentTimeMillis();
+  }
+
+
+  /**
+  * Allows the clock to be set to start at the same time as the Actor threads.
+  * Uses system time as the analogue for the start of the work day.
+  */
+  public void startClock() {
     startTime = System.currentTimeMillis();
   }
 
