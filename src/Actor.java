@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public abstract class Actor extends Thread {
 
-  private List todo;
+  private List<Task> todo = new ArrayList<Task>();
   
   /**
   * Adds a Task to the to-do list and keeps the list sorted.
@@ -16,10 +16,13 @@ public abstract class Actor extends Thread {
 
 
   /**
-  * Pops the next task that needs to be done off of the to-do list.
+  * 
+  * The popped task must be stored locally until completed.
+  *
+  * @return The next task to perform.
   */
-  protected Task nextTask() {
-    return new Task(0, 0);  
+  protected boolean nextTask() {
+    return new null;  
   }
 
 
@@ -28,5 +31,10 @@ public abstract class Actor extends Thread {
   */
   protected boolean checkConflict(Task t) {
     return false;
+  }
+
+
+  protected void printWithTime(String text) {
+    
   }
 }
