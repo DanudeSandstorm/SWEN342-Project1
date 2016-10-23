@@ -49,7 +49,11 @@ public class ConferenceRoom {
   }
 
   public synchronized CountDownLatch arriveFinal() {
-    //Checks if it is final countdown, wait 15 minutes and then countdown
+    //Checks if it is final countdown,
+    //wait 15 minutes and then final countdown
+    if (finalMeeting.getCount() == 1) {
+      //TODO
+    }
     finalMeeting.countDown();
     return finalMeeting;
   }

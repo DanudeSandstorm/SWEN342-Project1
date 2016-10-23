@@ -19,6 +19,11 @@ public class Manager extends Actor {
 	}
 
 	public synchronized CountDownLatch dailyPlanningMeeting() {
+		//Checks if all members are here,
+		//waits 15 minutes and then final countdown
+		if (finalMeeting.getCount() == 1) {
+			//TODO
+		}
 		dailyMeeting.countDown();
 		return dailyMeeting;
 	}
