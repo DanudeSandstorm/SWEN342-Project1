@@ -1,5 +1,7 @@
 package src;
 
+import java.util.Comparator;
+
 public class Task {
 
   private final int start;
@@ -30,5 +32,13 @@ public class Task {
 
   public void performTask() {
     
+  }
+
+  public static Comparator<Task> compare() {
+    return new Comparator<Task>() {
+      public int compare(Task a, Task b) {
+        return a.getStart() - b.getStart();
+      }
+    };
   }
 }

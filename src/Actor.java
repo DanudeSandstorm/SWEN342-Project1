@@ -6,22 +6,17 @@ import java.util.Comparator;
 
 public abstract class Actor implements Runnable {
 
-  private final Comparator<Task> taskCompare;
   private final List<Task> todoList;
   private Clock clock;
   private long startTime;
 
 
   public Actor(Clock clock) {
+    //Assign the clock
     this.clock = clock;
 
+    //Instantiate to-do list
     todoList = new ArrayList<Task>();
-
-    taskCompare = new Comparator<Task>() {
-      public int compare(Task a, Task b) {
-        return a.getStart() - b.getStart();
-      }
-    };
 
     //Begins the day
     startTime = clock.startDay();
@@ -61,7 +56,7 @@ public abstract class Actor implements Runnable {
     }
 
     todoList.add(task);
-    todoList.sort(taskCompare);
+    todoList.sort(Task.compare());
     return true;
   }
 
@@ -110,6 +105,6 @@ public abstract class Actor implements Runnable {
   //TODO replace printing with outputing to a file
   //Needs to be a synchronos method for output
   protected void printWithTime(String text) {
-    System.out.println(clock.getPrintableTime() + " " + text);
+    clock.getPrintableTime();
   }
 }
