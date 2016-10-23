@@ -21,9 +21,11 @@ public class Task {
   }
 
   public boolean conflicts(Task t) {
-    return (t.start >= start && t.start < start + duration) || (t.start +
-t.duration > t.start && t.start + t.duration <= start + duration) || (start >=
-t.start && start + duration <= t.start + t.duration);
+    return ((t.start >= start && t.start < start + duration) 
+            || (t.start + t.duration > t.start 
+                && t.start + t.duration <= start + duration) 
+            || (start >= t.start && start + duration <= t.start + t.duration)
+            );
   }
 
   public void performTask() {

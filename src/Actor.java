@@ -18,6 +18,11 @@ public abstract class Actor extends Thread {
 
   public Actor(Clock clock) {
     this.clock = clock;
+
+    addTask();
+    //conference room arriveFinal()
+    //returns gate
+    //gate.await();
   }
   
   /**

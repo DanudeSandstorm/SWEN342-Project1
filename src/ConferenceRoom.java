@@ -1,13 +1,18 @@
 package src;
 
+import java.util.concurrent.*;
+
 public class ConferenceRoom {
 
   private TeamLead owner;
   private int waitingFor;
 
+  private final CountDownLatch finalMeeting;
+
   public ConferenceRoom() {
     owner = null;
     waitingFor = 0;
+    finalMeeting = new CountDownLatch(13);
   }
 
 
@@ -30,14 +35,22 @@ public class ConferenceRoom {
   * returns true, otherwise it returns false and returns immediately.
   */
   public synchronized boolean arrive(TeamLead lookingFor) {
-    if(owner == null || !owner.equals(lookingFor)) {
+    if (owner == null || !owner.equals(lookingFor)) {
       return false;
     } else {
       try {
         this.wait();
       }
-      catch (InterruptedException e) {}
+      catch (InterruptedException e) {
+        return false;
+      }
       return true;
     }
+  }
+
+  public synchronized CountDownLatch arriveFinal() {
+    //Checks if it is final countdown, wait 15 minutes and then countdown
+    finalMeeting.countDown();
+    return finalMeeting();
   }
 }

@@ -1,5 +1,9 @@
 package src;
 
-public class Developer {
+public class Developer extends Actor {
 	
+	public Developer(Clock clock) {
+		super(clock);
+	}
+
 }
