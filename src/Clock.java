@@ -40,6 +40,22 @@ public class Clock {
     return System.currentTimeMillis() - startTime;
   }
 
+  /**
+  * Converts minutes into the equivilent time in model
+  **/
+  public long convertMinutes(int minutes) {
+    //TODO
+    return 0;
+  }
+
+  /**
+  * Converts time of day to equivilent time in model
+  * example: noon is 720 minutes
+  **/
+  public long convertTimeOfDay(int minutes) {
+    //TODO
+    return 0;
+  }
 
   /**
   * Returns a printable string version of the current simulated time.

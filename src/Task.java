@@ -4,11 +4,18 @@ import java.util.Comparator;
 
 public abstract class Task {
 
-  private final int start;
-  private final int duration;
+  private final long start;
+  private final long duration;
   private final String type;
 
-  public Task(String type, int startTime, int duration) {
+  //Task that has no length
+  public Task(String type, long startTime) {
+    this.type = type;
+    start = startTime;
+    duration = 0;
+  }
+
+  public Task(String type, long startTime, long duration) {
     this.type = type;
     start = startTime;
     this.duration = duration;
@@ -18,7 +25,7 @@ public abstract class Task {
     return type;
   }
 
-  public int getStart() {
+  public long getStart() {
     return start;
   }
 
@@ -35,7 +42,7 @@ public abstract class Task {
   public static Comparator<Task> compare() {
     return new Comparator<Task>() {
       public int compare(Task a, Task b) {
-        return a.getStart() - b.getStart();
+        return Long.compare(a.getStart(), b.getStart());
       }
     };
   }

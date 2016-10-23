@@ -7,8 +7,8 @@ import java.util.Comparator;
 public abstract class Actor implements Runnable {
 
   private final List<Task> todoList;
-  private Clock clock;
-  private long startTime;
+  protected Clock clock;
+  protected long startTime;
 
 
   public Actor(Clock clock) {
@@ -106,8 +106,9 @@ public abstract class Actor implements Runnable {
   /**
   * Saves an action and the time it occured to a file
   **/
-  protected synchronized void outputAction(String text) {
+  protected synchronized void outputAction(String action) {
     clock.getPrintableTime();
     //TODO!
+    //save timestap: action
   }
 }
