@@ -7,8 +7,8 @@ public class Manager extends Actor {
 
   private final CountDownLatch dailyMeeting;
 
-  public Manager(Clock clock) {
-    super(clock);
+  public Manager(Clock clock, ConferenceRoom room) {
+    super(clock, room);
     dailyMeeting = new CountDownLatch(3);
   }
 
@@ -33,7 +33,23 @@ public class Manager extends Actor {
   }
 
   protected void scheduleMeetings() {
-    //TODO!
+    addTask(new Task("Meeting", clock.convertTimeOfDay(600), clock.convertMinutes(60)) {
+        @Override
+        public void performTask() {
+          outputAction("Manager went to meeting");
+          //TODO!
+        }
+      }
+    );
+
+    addTask(new Task("Meeting", clock.convertTimeOfDay(840), clock.convertMinutes(60)) {
+        @Override
+        public void performTask() {
+          outputAction("Manager went to meeting");
+          //TODO!
+        }
+      }
+    );
   }
 
   protected void scheduleLunch() {
@@ -54,6 +70,7 @@ public class Manager extends Actor {
         public void performTask() {
           outputAction("Manager went home");
           //TODO!
+          //shutdown the thread
         }
       }
     );

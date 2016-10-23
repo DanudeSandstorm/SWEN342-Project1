@@ -41,7 +41,7 @@ public class Clock {
   }
 
   /**
-  * Converts minutes into the equivilent time in model
+  * Converts minutes into the equivilent time
   **/
   public long convertMinutes(int minutes) {
     //TODO
@@ -54,6 +54,8 @@ public class Clock {
   **/
   public long convertTimeOfDay(int minutes) {
     //TODO
+    //offset = minutes + math
+    //return startTime + offset
     return 0;
   }
 

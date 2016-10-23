@@ -3,17 +3,19 @@ package src;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.concurrent.*;
 
 public abstract class Actor implements Runnable {
 
   private final List<Task> todoList;
   protected Clock clock;
+  protected ConferenceRoom room;
   protected long startTime;
 
 
-  public Actor(Clock clock) {
-    //Assign the clock
+  public Actor(Clock clock, ConferenceRoom room) {
     this.clock = clock;
+    this.room = room;
 
     //Instantiate to-do list
     todoList = new ArrayList<Task>();
@@ -28,10 +30,18 @@ public abstract class Actor implements Runnable {
   protected abstract void scheduleLeave(long start);
 
   protected void finalMeeting() {
-    //addTask();
-    //conference room arriveFinal()
-    //returns gate
-    //gate.await();
+    addTask(new Task("Meeting", clock.convertTimeOfDay(600), clock.convertMinutes(60)) {
+        @Override
+        public void performTask() {
+          outputAction("Arrived to end of day meeting");
+          CountDownLatch arriveFinal = room.arriveFinal();
+          try {
+            arriveFinal.await();
+          }
+          catch (InterruptedException e) {}
+        }
+      }
+    );
   }
 
   //Begins the day

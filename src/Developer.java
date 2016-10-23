@@ -2,8 +2,8 @@ package src;
 
 public class Developer extends Actor {
 	
-	public Developer(Clock clock) {
-		super(clock);
+	public Developer(Clock clock, ConferenceRoom room) {
+    	super(clock, room);
 	}
 
 	public void run() {

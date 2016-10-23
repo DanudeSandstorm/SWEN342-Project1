@@ -2,8 +2,8 @@ package src;
 
 public class TeamLead extends Actor {
 
-	public TeamLead(Clock clock) {
-		super(clock);
+	public TeamLead(Clock clock, ConferenceRoom room) {
+    	super(clock, room);
 	}
 
 	public void run() {
