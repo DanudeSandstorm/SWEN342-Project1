@@ -25,7 +25,7 @@ public class Clock {
   **/
   public long startDay() {
 
-    //todo implement lock
+    //TODO! implement lock
     return startTime;
   }
 

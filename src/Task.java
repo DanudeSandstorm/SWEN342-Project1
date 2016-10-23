@@ -2,7 +2,7 @@ package src;
 
 import java.util.Comparator;
 
-public class Task {
+public abstract class Task {
 
   private final int start;
   private final int duration;
@@ -30,9 +30,7 @@ public class Task {
             );
   }
 
-  public void performTask() {
-    
-  }
+  public abstract void performTask();
 
   public static Comparator<Task> compare() {
     return new Comparator<Task>() {

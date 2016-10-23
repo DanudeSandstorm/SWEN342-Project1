@@ -8,7 +8,7 @@ public class TeamLead extends Actor {
 	}
 
 	public void run() {
-		
+		//TODO!
 	}
 
 	/**
@@ -17,20 +17,21 @@ public class TeamLead extends Actor {
 	* or 0 if the lead was able to answer
 	*/
 	public int askQuestion() {
+		//TODO!
 		return 0;
 	}
 
 
 	protected void scheduleMeetings() {
-
+		//TODO!
 	}
 
 	protected void scheduleLunch() {
-
+		//TODO!
 	}
 
 	protected void scheduleLeave(long start) {
-
+		//TODO!
 	}
 	
 }

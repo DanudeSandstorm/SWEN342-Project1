@@ -102,9 +102,11 @@ public abstract class Actor implements Runnable {
   }
 
 
-  //TODO replace printing with outputing to a file
-  //Needs to be a synchronos method for output
-  protected void printWithTime(String text) {
+  /**
+  * Saves an action and the time it occured to a file
+  **/
+  protected synchronized void outputAction(String text) {
     clock.getPrintableTime();
+    //TODO!
   }
 }

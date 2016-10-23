@@ -8,23 +8,23 @@ public class Manager extends Actor {
 	}
 
 	public void run() {
-
+		//TODO!
 	}
 
 	public void askQuestion() {
-
+		//TODO!
 	}
 
 	protected void scheduleMeetings() {
-
+		//TODO!
 	}
 
 	protected void scheduleLunch() {
-
+		//TODO!
 	}
 
 	protected void scheduleLeave(long start) {
-
+		//TODO!
 	}
 
 }
