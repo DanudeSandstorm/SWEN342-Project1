@@ -4,6 +4,11 @@ public class TeamLead extends Actor {
 
 	public TeamLead(Clock clock) {
 		super(clock);
+		//additional schedule
+	}
+
+	public void run() {
+		
 	}
 
 	/**
@@ -13,6 +18,19 @@ public class TeamLead extends Actor {
 	*/
 	public int askQuestion() {
 		return 0;
+	}
+
+
+	protected void scheduleMeetings() {
+
+	}
+
+	protected void scheduleLunch() {
+
+	}
+
+	protected void scheduleLeave(long start) {
+
 	}
 	
 }

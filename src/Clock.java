@@ -6,12 +6,9 @@ public class Clock {
   
 
   /**
-  * Constructor sets the time to the current system time.
-  * The day will be more accurate if startClock is called right before starting
-  * the actor threads
+  *
   */
   public Clock() {
-    startTime = System.currentTimeMillis();
   }
 
 
@@ -23,6 +20,14 @@ public class Clock {
     startTime = System.currentTimeMillis();
   }
 
+  /**
+  * Locks threads until the clock has started
+  **/
+  public long startDay() {
+
+    //todo implement lock
+    return startTime;
+  }
 
   /**
   * Returns the time that has passed since the start of the day in milliseconds.

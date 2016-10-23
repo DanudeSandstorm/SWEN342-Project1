@@ -51,6 +51,6 @@ public class ConferenceRoom {
   public synchronized CountDownLatch arriveFinal() {
     //Checks if it is final countdown, wait 15 minutes and then countdown
     finalMeeting.countDown();
-    return finalMeeting();
+    return finalMeeting;
   }
 }
