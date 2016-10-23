@@ -4,12 +4,12 @@ public class Developer extends Actor {
 	
 	public Developer(Clock clock) {
 		super(clock);
-		//additional schedule
 	}
 
-
 	public void run() {
-		//TODO!
+		startDay();
+		//additional schedule
+		//TODO
 	}
 
 	private void question() {

@@ -4,11 +4,12 @@ public class TeamLead extends Actor {
 
 	public TeamLead(Clock clock) {
 		super(clock);
-		//additional schedule
 	}
 
 	public void run() {
-		//TODO!
+		startDay();
+		//additional schedule
+		//TODO
 	}
 
 	/**
@@ -16,7 +17,7 @@ public class TeamLead extends Actor {
 	* @Return the emount of time spent waiting on the manager
 	* or 0 if the lead was able to answer
 	*/
-	public int askQuestion() {
+	public synchronized long askQuestion() {
 		//TODO!
 		return 0;
 	}

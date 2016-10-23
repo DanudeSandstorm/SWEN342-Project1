@@ -1,17 +1,29 @@
 package src;
 
+import java.util.concurrent.*;
+
 public class Manager extends Actor {
+
+
+	private final CountDownLatch dailyMeeting;
 
 	public Manager(Clock clock) {
 		super(clock);
-		//additional schedule
+		dailyMeeting = new CountDownLatch(3);
 	}
 
 	public void run() {
-		//TODO!
+		startDay();
+		//additional schedule
+		//TODO
 	}
 
-	public void askQuestion() {
+	public synchronized CountDownLatch dailyPlanningMeeting() {
+		dailyMeeting.countDown();
+		return dailyMeeting;
+	}
+
+	public synchronized void askQuestion() {
 		//TODO!
 	}
 

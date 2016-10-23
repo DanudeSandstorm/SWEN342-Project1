@@ -17,19 +17,6 @@ public abstract class Actor implements Runnable {
 
     //Instantiate to-do list
     todoList = new ArrayList<Task>();
-
-    //Begins the day
-    startTime = clock.startDay();
-
-    /** Shedules the day **/
-    scheduleMeetings();
-
-    scheduleLunch();
-
-    finalMeeting();
-
-    scheduleLeave(startTime);
-
   }
 
   public abstract void run();
@@ -45,6 +32,20 @@ public abstract class Actor implements Runnable {
     //conference room arriveFinal()
     //returns gate
     //gate.await();
+  }
+
+  //Begins the day
+  protected void startDay() {
+    startTime = clock.startDay();
+
+    /** Shedules the day **/
+    scheduleMeetings();
+
+    scheduleLunch();
+
+    finalMeeting();
+
+    scheduleLeave(startTime);
   }
 
   /**
