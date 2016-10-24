@@ -2,11 +2,13 @@ package src;
 
 public class Developer extends Actor {
 	
-	public Developer(Clock clock, ConferenceRoom room) {
-    	super(clock, room);
+	public Developer(String name, Clock clock, ConferenceRoom room) {
+    	super(name, clock, room);
 	}
 
 	public void run() {
+		//TODO
+		//offset day start random up to 30 minutes
 		startDay();
 		//additional schedule
 		//TODO
@@ -16,15 +18,7 @@ public class Developer extends Actor {
 		//TODO!
 	}
 
-	protected void scheduleMeetings() {
-		//TODO!
-	}
-
-	protected void scheduleLunch() {
-		//TODO!
-	}
-
-	protected void scheduleLeave(long start) {
+	protected void startDay() {
 		//TODO!
 	}
 

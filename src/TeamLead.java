@@ -2,14 +2,50 @@ package src;
 
 public class TeamLead extends Actor {
 
-	public TeamLead(Clock clock, ConferenceRoom room) {
-    	super(clock, room);
+	private Manager manager;
+
+	public TeamLead(String name, Clock clock, ConferenceRoom room, Manager manager) {
+    	super(name, clock, room);
+    	this.manager = manager;
 	}
 
 	public void run() {
-		startDay();
-		//additional schedule
 		//TODO
+		//offset day start random up to 30 minutes
+		startDay();
+		
+		//TODO
+		//Main execution loop
+		while (!leave) {
+
+		}
+	}
+
+
+	/**
+	* Begin the day!
+	* Gets start time and sets up shedual
+	**/
+	protected void startDay() {
+		//TODO!
+	}
+
+
+	protected void scheduleDailyPlanningMeeting() {
+	  //Meeting at 8:00 am
+	  addTask(new Task("Meeting", clock.convertTimeOfDay(480), clock.convertMinutes(15)) {
+	      @Override
+	      public void performTask() {
+	        outputAction(name + " arrived to the daily planning meeting.");
+	        //Wait for everyone to arrive
+	        CountDownLatch arrive = manager.dailyPlanningMeeting();
+	        try { arrive.await(); } 
+	        catch (InterruptedException e) {}
+
+	        busy(15);
+	      }
+	    }
+	  );
 	}
 
 	/**
@@ -20,19 +56,6 @@ public class TeamLead extends Actor {
 	public synchronized long askQuestion() {
 		//TODO!
 		return 0;
-	}
-
-
-	protected void scheduleMeetings() {
-		//TODO!
-	}
-
-	protected void scheduleLunch() {
-		//TODO!
-	}
-
-	protected void scheduleLeave(long start) {
-		//TODO!
 	}
 	
 }
