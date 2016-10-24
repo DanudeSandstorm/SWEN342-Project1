@@ -13,6 +13,7 @@ public abstract class Actor implements Runnable {
   protected String name;
   protected long startTime;
   protected boolean leave; //should the person leave work?
+  protected int working, lunch, meetings; //stats
 
 
   public Actor(String name, Clock clock, ConferenceRoom room) {
@@ -20,6 +21,9 @@ public abstract class Actor implements Runnable {
     this.clock = clock;
     this.room = room;
     leave = false;
+    working = 0;
+    lunch = 0;
+    meetings = 0;
 
     //Instantiate to-do list
     todoList = new ArrayList<Task>();
@@ -31,6 +35,11 @@ public abstract class Actor implements Runnable {
   protected abstract void startDay();
 
   protected abstract void work();
+
+  //this method is overloaded for different amounts of stats
+  //classes which inherit implement this and
+  //decide which method to invoke
+  protected abstract void printStats();
 
 
   /**
@@ -47,6 +56,8 @@ public abstract class Actor implements Runnable {
        work();
      }
    }
+
+   printStats();
   }
 
 
@@ -186,9 +197,51 @@ public abstract class Actor implements Runnable {
   /**
   * Saves an action and the time it occured to a file
   **/
-  protected synchronized void outputAction(String action) {
+  protected void outputAction(String action) {
+    String text = "";
     clock.getPrintableTime();
     //TODO!
     //save timestap: action
+    writeToFile(text);
+  }
+
+
+  /**
+  * Prints the stats of an actor
+  * (a) working, (b) at lunch, (c) in meetings
+  **/
+  protected void printStats(int a, int b, int c) {
+    String text = "";
+    //TODO
+    //Name
+    //Action - Amount
+    //clock.convertMinutes(amount);
+    writeToFile(text);
+  }
+
+
+  /**
+  * Prints the stats of an actor
+  * (a) working, (b) at lunch, (c) in meetings, and
+  * (d) waiting for the manager to be free to answer a question.
+  * Overloaded method for actors with the 4th stat
+  **/
+  protected void printStats(int a, int b, int c, int d) {
+    printStats(a, b, c);
+
+    String text = "";
+    //TODO
+    //Action - Amount
+    //clock.convertMinutes(amount);
+    writeToFile(text);
+  }
+
+
+
+  /**
+  * Synchronized method that writes a string to the file buffer
+  **/
+  private synchronized void writeToFile(String text) {
+    //TODO
   }
 }

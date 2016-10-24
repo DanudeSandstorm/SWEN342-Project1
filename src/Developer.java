@@ -1,9 +1,12 @@
 package src;
 
 public class Developer extends Actor {
+
+  protected int waiting; 
   
   public Developer(String name, Clock clock, ConferenceRoom room) {
       super(name, clock, room);
+      waiting = 0;
   }
 
   @Override
@@ -22,6 +25,14 @@ public class Developer extends Actor {
     //Work for random amount of time
     int duration = 0;
     busy(duration);
+  }
+
+  /**
+  * Prints stats
+  **/
+  @Override
+  protected void printStats() {
+    printStats(working, lunch, meetings, waiting);
   }
 
   private void scheduleDailyStandup() {

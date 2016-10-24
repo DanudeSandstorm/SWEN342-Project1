@@ -46,6 +46,15 @@ public class Manager extends Actor {
   }
 
 
+  /**
+  * Prints stats
+  **/
+  @Override
+  protected void printStats() {
+    printStats(working, lunch, meetings);
+  }
+
+
   protected void scheduleDailyStandup() {
     //Meeting at 8:00 am
     addTask(new Task("Meeting", clock.convertTimeOfDay(480), clock.convertMinutes(15)) {

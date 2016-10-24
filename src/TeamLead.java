@@ -4,11 +4,13 @@ import java.util.concurrent.*;
 
 public class TeamLead extends Actor {
 
-  private Manager manager;
+  protected Manager manager;
+  protected int waiting;
 
   public TeamLead(String name, Clock clock, ConferenceRoom room, Manager manager) {
       super(name, clock, room);
       this.manager = manager;
+      waiting = 0;
   }
 
 
@@ -29,6 +31,15 @@ public class TeamLead extends Actor {
     //Work for random amount of time
     int duration = 0;
     busy(duration);
+  }
+
+
+  /**
+  * Prints stats
+  **/
+  @Override
+  protected void printStats() {
+    printStats(working, lunch, meetings, waiting);
   }
 
 
