@@ -24,6 +24,10 @@ public class Developer extends Actor {
     busy(duration);
   }
 
+  private void scheduleDailyStandup() {
+    //TODO
+  }
+
   private void question() {
     //TODO!
   }

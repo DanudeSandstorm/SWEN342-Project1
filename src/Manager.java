@@ -20,7 +20,7 @@ public class Manager extends Actor {
   protected void startDay() {
     startTime = clock.startDay();
     //Daily Standup
-    scheduleDailyPlanningMeeting();
+    scheduleDailyStandup();
     //Last meeting
     finalMeeting();
     //Morning meeting at 10:00am
@@ -46,14 +46,14 @@ public class Manager extends Actor {
   }
 
 
-  protected void scheduleDailyPlanningMeeting() {
+  protected void scheduleDailyStandup() {
     //Meeting at 8:00 am
     addTask(new Task("Meeting", clock.convertTimeOfDay(480), clock.convertMinutes(15)) {
         @Override
         public void performTask() {
           outputAction(name + " is waiting for team leads to arrive.");
           //Wait for everyone to arrive
-          CountDownLatch arrive = dailyPlanningMeeting();
+          CountDownLatch arrive = dailyStandup();
           try { arrive.await(); } 
           catch (InterruptedException e) {}
 
@@ -65,7 +65,7 @@ public class Manager extends Actor {
   }
 
 
-  public synchronized CountDownLatch dailyPlanningMeeting() {
+  public synchronized CountDownLatch dailyStandup() {
     dailyMeeting.countDown();
     return dailyMeeting;
   }

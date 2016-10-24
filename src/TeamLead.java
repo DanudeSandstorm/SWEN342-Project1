@@ -31,14 +31,15 @@ public class TeamLead extends Actor {
     busy(duration);
   }
 
-  protected void scheduleDailyPlanningMeeting() {
+
+  protected void scheduleDailyStandupWithManager() {
     //Meeting at 8:00 am
     addTask(new Task("Meeting", clock.convertTimeOfDay(480), clock.convertMinutes(15)) {
         @Override
         public void performTask() {
           outputAction(name + " arrived to the daily planning meeting.");
           //Wait for everyone to arrive
-          CountDownLatch arrive = manager.dailyPlanningMeeting();
+          CountDownLatch arrive = manager.dailyStandup();
           try { arrive.await(); } 
           catch (InterruptedException e) {}
 
@@ -47,6 +48,12 @@ public class TeamLead extends Actor {
       }
     );
   }
+
+
+  protected void scheduleDailyStandupWithTeam() {
+    //TODO
+  }
+
 
   /**
   * Ask the team leader a question 
