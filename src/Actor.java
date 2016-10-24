@@ -20,7 +20,7 @@ public abstract class Actor implements Runnable {
     //Instantiate to-do list
     todoList = new ArrayList<Task>();
   }
-
+  /** Abstract Methods **/
   public abstract void run();
 
   protected abstract void scheduleMeetings();
@@ -29,34 +29,56 @@ public abstract class Actor implements Runnable {
 
   protected abstract void scheduleLeave(long start);
 
+  /**
+  * The final meeting of the day
+  **/
   protected void finalMeeting() {
+    //Meeting at 4:00pm
     addTask(new Task("Meeting", clock.convertTimeOfDay(600), clock.convertMinutes(60)) {
         @Override
         public void performTask() {
-          outputAction("Arrived to end of day meeting");
+          outputAction("Arrived to the end of day meeting");
+          //Wait for everyone to arrive
           CountDownLatch arriveFinal = room.arriveFinal();
-          try {
-            arriveFinal.await();
-          }
+          try { arriveFinal.await(); } 
           catch (InterruptedException e) {}
+
+          busy(15);
         }
       }
     );
   }
 
-  //Begins the day
+
+  /**
+  * Begins the day
+  * Gets start time and sets up shedual
+  **/
   protected void startDay() {
     startTime = clock.startDay();
 
     /** Shedules the day **/
+    finalMeeting();
+
     scheduleMeetings();
 
     scheduleLunch();
 
-    finalMeeting();
-
     scheduleLeave(startTime);
   }
+
+
+  /**
+  * Thread sleeps for a specified amount of time
+  * @param minutes - amount of minutes to sleep
+  **/
+  protected void busy(long minutes) {
+    try { 
+      Thread.sleep(clock.convertMinutes(minutes)); 
+    } 
+    catch(InterruptedException e) {}
+  }
+
 
   /**
   * Adds a Task to the to-do list and keeps the list sorted.

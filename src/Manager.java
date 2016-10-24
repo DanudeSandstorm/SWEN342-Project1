@@ -19,11 +19,6 @@ public class Manager extends Actor {
   }
 
   public synchronized CountDownLatch dailyPlanningMeeting() {
-    //Checks if all members are here,
-    //waits 15 minutes and then final countdown
-    if (dailyMeeting.getCount() == 1) {
-      //TODO
-    }
     dailyMeeting.countDown();
     return dailyMeeting;
   }
@@ -37,7 +32,7 @@ public class Manager extends Actor {
         @Override
         public void performTask() {
           outputAction("Manager went to meeting");
-          //TODO!
+          busy(60);
         }
       }
     );
@@ -46,7 +41,7 @@ public class Manager extends Actor {
         @Override
         public void performTask() {
           outputAction("Manager went to meeting");
-          //TODO!
+          busy(60);
         }
       }
     );
@@ -58,7 +53,7 @@ public class Manager extends Actor {
         @Override
         public void performTask() {
           outputAction("Manager went to lunch");
-          //TODO!
+          busy(60);
         }
       }
     );
