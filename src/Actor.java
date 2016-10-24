@@ -10,24 +10,69 @@ public abstract class Actor implements Runnable {
   private final List<Task> todoList;
   protected Clock clock;
   protected ConferenceRoom room;
+  protected String name;
   protected long startTime;
+  protected boolean leave; //should the person leave work?
 
 
-  public Actor(Clock clock, ConferenceRoom room) {
+  public Actor(String name, Clock clock, ConferenceRoom room) {
+    this.name = name;
     this.clock = clock;
     this.room = room;
+    leave = false;
 
     //Instantiate to-do list
     todoList = new ArrayList<Task>();
   }
+
+
   /** Abstract Methods **/
   public abstract void run();
 
-  protected abstract void scheduleMeetings();
+  protected abstract void startDay();
 
-  protected abstract void scheduleLunch();
 
-  protected abstract void scheduleLeave(long start);
+  /**
+  * Thread sleeps for a specified amount of time
+  * @param minutes - amount of minutes to sleep
+  **/
+  protected void busy(int minutes) {
+    try { 
+      Thread.sleep(clock.convertMinutes(minutes)); 
+    } 
+    catch(InterruptedException e) {}
+  }
+
+
+  /**
+  *
+  **/
+  protected void scheduleMeeting(int time, int duration) {
+    addTask(new Task("Meeting", clock.convertTimeOfDay(time), clock.convertMinutes(duration)) {
+        @Override
+        public void performTask() {
+          outputAction(name + " went to meeting");
+          busy(duration);
+        }
+      }
+    );
+  }
+
+  /**
+  *
+  **/
+  protected void scheduleLunch(int time, int duration) {
+    //Lunch at 12:00 for 1 hour
+    addTask(new Task("Lunch", clock.convertTimeOfDay(time), clock.convertMinutes(duration)) {
+        @Override
+        public void performTask() {
+          outputAction(name + " went to lunch");
+          busy(duration);
+        }
+      }
+    );
+  }
+
 
   /**
   * The final meeting of the day
@@ -37,7 +82,7 @@ public abstract class Actor implements Runnable {
     addTask(new Task("Meeting", clock.convertTimeOfDay(600), clock.convertMinutes(60)) {
         @Override
         public void performTask() {
-          outputAction("Arrived to the end of day meeting");
+          outputAction(name + " arrived to the end of day meeting");
           //Wait for everyone to arrive
           CountDownLatch arriveFinal = room.arriveFinal();
           try { arriveFinal.await(); } 
@@ -49,34 +94,18 @@ public abstract class Actor implements Runnable {
     );
   }
 
-
   /**
-  * Begins the day
-  * Gets start time and sets up shedual
+  *
   **/
-  protected void startDay() {
-    startTime = clock.startDay();
-
-    /** Shedules the day **/
-    finalMeeting();
-
-    scheduleMeetings();
-
-    scheduleLunch();
-
-    scheduleLeave(startTime);
-  }
-
-
-  /**
-  * Thread sleeps for a specified amount of time
-  * @param minutes - amount of minutes to sleep
-  **/
-  protected void busy(long minutes) {
-    try { 
-      Thread.sleep(clock.convertMinutes(minutes)); 
-    } 
-    catch(InterruptedException e) {}
+  protected void scheduleLeave(int time) {
+    addTask(new Task("Leave", clock.convertTimeOfDay(time)) {
+        @Override
+        public void performTask() {
+          outputAction(name + " went home");
+          leave = true;
+        }
+      }
+    );
   }
 
 

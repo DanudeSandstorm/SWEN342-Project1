@@ -1,31 +1,35 @@
 package src;
 
 public class Clock {
-
+  /** Attributes **/
   private long startTime;
+  private boolean started;
   
-
-  /**
-  *
-  */
+  /** Constructor **/
   public Clock() {
+    started = false;
   }
 
 
   /**
   * Allows the clock to be set to start at the same time as the Actor threads.
   * Uses system time as the analogue for the start of the work day.
-  */
+  **/
   public void startClock() {
     startTime = System.currentTimeMillis();
+    started = true;
+    notifyAll(); //Day starts
   }
 
   /**
   * Locks threads until the clock has started
   **/
-  public long startDay() {
-
-    //TODO! implement lock
+  public synchronized long startDay() {
+    while (!started) {
+      try { wait(); }
+      catch (InterruptedException e) {}
+    }
+    
     return startTime;
   }
 
@@ -45,7 +49,7 @@ public class Clock {
   **/
   public long convertMinutes(int minutes) {
     //TODO
-    return 0;
+    return (long) 0;
   }
 
   /**
@@ -56,7 +60,7 @@ public class Clock {
     //TODO
     //offset = minutes + math
     //return startTime + offset
-    return 0;
+    return (long) 0;
   }
 
   /**

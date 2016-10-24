@@ -2,11 +2,13 @@ package src;
 
 public class TeamLead extends Actor {
 
-	public TeamLead(Clock clock, ConferenceRoom room) {
-    	super(clock, room);
+	public TeamLead(String name, Clock clock, ConferenceRoom room) {
+    	super(name, clock, room);
 	}
 
 	public void run() {
+		//TODO
+		//offset day start random up to 30 minutes
 		startDay();
 		//additional schedule
 		//TODO
@@ -23,15 +25,7 @@ public class TeamLead extends Actor {
 	}
 
 
-	protected void scheduleMeetings() {
-		//TODO!
-	}
-
-	protected void scheduleLunch() {
-		//TODO!
-	}
-
-	protected void scheduleLeave(long start) {
+	protected void startDay() {
 		//TODO!
 	}
 	
