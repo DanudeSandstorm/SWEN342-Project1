@@ -36,6 +36,14 @@ public class Developer extends Actor {
 
 
   /**
+  * @return the developer's team lead
+  */
+  protected TeamLead getLead() {
+    return lead;
+  }
+
+
+  /**
   * Prints stats
   **/
   @Override

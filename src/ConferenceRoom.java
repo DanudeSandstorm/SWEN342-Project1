@@ -4,14 +4,12 @@ import java.util.concurrent.*;
 
 public class ConferenceRoom {
 
-  private TeamLead owner;
-  private int waitingFor;
-
   private final CountDownLatch finalMeeting;
+  private CyclicBarrier standup;
+  private TeamLead owner = null;
+
 
   public ConferenceRoom() {
-    owner = null;
-    waitingFor = 0;
     finalMeeting = new CountDownLatch(13);
   }
 
@@ -22,30 +20,28 @@ public class ConferenceRoom {
   * number of team members he's waiting for. He and all future members that
   * arrive wait for everyone to be there before starting the meeting.
   */
-  public synchronized void reserveRoom(TeamLead lead, int members) {
-    owner = lead;
-    waitingFor = members;
+  public synchronized CyclicBarrier reserveRoom(TeamLead lead) {
+
+    //TODO
+    //lock
+      owner = lead;
+      standup = new CyclicBarrier(4);
+
+    return arrive(lead);
   }
 
 
   /**
-  * Lets a team member arrive at the conference room.
-  * A team member arrives at the conference room and asks if it's currently
-  * reserved by their team lead. If it is, they stay for the meeting and arrive
-  * returns true, otherwise it returns false and returns immediately.
+  * @return a CyclicBarrier for the actor to wait on, 
+  * or null if the room is reserved
   */
-  public synchronized boolean arrive(TeamLead lookingFor) {
-    if (owner == null || !owner.equals(lookingFor)) {
-      return false;
-    } else {
-      try {
-        wait();
-      }
-      catch (InterruptedException e) {
-        return false;
-      }
-      return true;
+  public synchronized CyclicBarrier arrive(Actor actor) {
+    if ((actor instanceof TeamLead && actor == owner) ||
+       (actor instanceof Developer && ((Developer) actor).getLead() == owner)) {
+      return standup;
     }
+
+    return null;
   }
 
   public synchronized CountDownLatch arriveFinal() {
