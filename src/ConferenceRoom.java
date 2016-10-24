@@ -39,7 +39,7 @@ public class ConferenceRoom {
       return false;
     } else {
       try {
-        this.wait();
+        wait();
       }
       catch (InterruptedException e) {
         return false;

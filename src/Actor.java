@@ -29,12 +29,13 @@ public abstract class Actor implements Runnable {
     todoList = new ArrayList<Task>();
   }
 
-
+  /**********************/
   /** Abstract Methods **/
+  /**********************/
 
   protected abstract void startDay();
 
-  protected abstract void work();
+  protected abstract void doingWork();
 
   //this method is overloaded for different amounts of stats
   //classes which inherit implement this and
@@ -53,7 +54,7 @@ public abstract class Actor implements Runnable {
      //Checks to see if has a task
      //If doesn't, works for a bit
      if (!nextTask()) {
-       work();
+       doingWork();
      }
    }
 
@@ -62,16 +63,52 @@ public abstract class Actor implements Runnable {
 
 
   /**
+  * @return the name of the actor
+  **/
+  public String getName() {
+    return name;
+  }
+
+  /********************/
+  /***    Sleep     ***/
+  /********************/
+
+  /**
   * Thread sleeps for a specified amount of time
   * @param minutes - amount of minutes to sleep
   **/
-  protected void busy(int minutes) {
+  protected void busy(int duration) {
     try { 
-      Thread.sleep(clock.convertMinutes(minutes)); 
+      Thread.sleep(clock.convertMinutes(duration)); 
     } 
     catch(InterruptedException e) {}
   }
 
+
+  /**
+  * Overloaded method that increases time spend working
+  * and sets the actor to busy
+  **/
+  protected void doingWork(int duration) {
+    working += duration;
+    busy(duration);
+  }
+
+
+  protected void eatingLunch(int duration) {
+    lunch = duration;
+    busy(duration);
+  }
+
+
+  protected void inMeeting(int duration) {
+    meetings += duration;
+    busy(duration);
+  }
+
+  /********************/
+  /***  Scheduling  ***/
+  /********************/
 
   /**
   *
@@ -81,7 +118,7 @@ public abstract class Actor implements Runnable {
         @Override
         public void performTask() {
           outputAction(name + " went to a meeting.");
-          busy(duration);
+          inMeeting(duration);
         }
       }
     );
@@ -96,7 +133,7 @@ public abstract class Actor implements Runnable {
         @Override
         public void performTask() {
           outputAction(name + " went to lunch.");
-          busy(duration);
+          eatingLunch(duration);
         }
       }
     );
@@ -117,14 +154,15 @@ public abstract class Actor implements Runnable {
           try { arrive.await(); } 
           catch (InterruptedException e) {}
 
-          busy(15);
+          inMeeting(15);
         }
       }
     );
   }
 
+
   /**
-  *
+  * The actor leaves the office
   **/
   protected void scheduleLeave(int time) {
     addTask(new Task("Leave", clock.convertTimeOfDay(time)) {
@@ -137,6 +175,10 @@ public abstract class Actor implements Runnable {
     );
   }
 
+
+  /********************/
+  /***   Tasking    ***/
+  /********************/
 
   /**
   * Adds a Task to the to-do list and keeps the list sorted.
@@ -194,6 +236,10 @@ public abstract class Actor implements Runnable {
   }
 
 
+  /********************/
+  /***    Output    ***/
+  /********************/
+
   /**
   * Saves an action and the time it occured to a file
   **/
@@ -213,9 +259,9 @@ public abstract class Actor implements Runnable {
   protected void printStats(int a, int b, int c) {
     String text = "";
     //TODO
-    //Name
-    //Action - Amount
-    //clock.convertMinutes(amount);
+    //Name:
+    //for each action
+      //string = "Action - Amount"
     writeToFile(text);
   }
 
@@ -231,8 +277,7 @@ public abstract class Actor implements Runnable {
 
     String text = "";
     //TODO
-    //Action - Amount
-    //clock.convertMinutes(amount);
+    //string = "Action - Amount"
     writeToFile(text);
   }
 

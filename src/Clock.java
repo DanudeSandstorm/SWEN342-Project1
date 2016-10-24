@@ -45,15 +45,25 @@ public class Clock {
   }
 
   /**
-  * Converts minutes into the equivilent time
+  * Converts minutes into the equivilent time in model
   **/
   public long convertMinutes(int minutes) {
     //TODO
     return (long) 0;
   }
 
+
   /**
-  * Converts time of day to equivilent time in model
+  * Converts a period of the model's time scale to corrisponding minutes
+  **/
+  public int convertModelTime(long time) {
+    //TODO
+    return 0;
+  }
+
+
+  /**
+  * Converts time of day in minutes to equivilent time in model
   * example: noon is 720 minutes
   **/
   public long convertTimeOfDay(int minutes) {

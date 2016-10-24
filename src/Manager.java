@@ -38,11 +38,11 @@ public class Manager extends Actor {
   * Randomly assigns a duration at which to perform work
   **/
   @Override
-  protected void work() {
+  protected void doingWork() {
     //TODO
     //Work for random amount of time
     int duration = 0;
-    busy(duration);
+    doingWork(duration);
   }
 
 
@@ -67,7 +67,7 @@ public class Manager extends Actor {
           catch (InterruptedException e) {}
 
           outputAction(name + " has started the daily planning meeting.");
-          busy(15);
+          inMeeting(15);
         }
       }
     );
