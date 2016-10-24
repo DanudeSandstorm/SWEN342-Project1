@@ -12,7 +12,7 @@ public abstract class Actor implements Runnable {
   protected ConferenceRoom room;
   protected String name;
   protected long startTime;
-  protected boolean leave; //should the person leave work?
+  protected volatile boolean leave; //should the person leave work?
   protected int working, lunch, meetings; //stats
 
 

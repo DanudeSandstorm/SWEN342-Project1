@@ -3,7 +3,7 @@ package src;
 public class Clock {
   /** Attributes **/
   private long startTime;
-  private boolean started;
+  private volatile boolean started;
   
   /** Constructor **/
   public Clock() {
