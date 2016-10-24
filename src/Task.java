@@ -4,9 +4,9 @@ import java.util.Comparator;
 
 public abstract class Task {
 
-  private final long start;
-  private final long duration;
   private final String type;
+  private long start;
+  private long duration;
 
   //Task that has no length
   public Task(String type, long startTime) {
@@ -23,6 +23,14 @@ public abstract class Task {
 
   public String getType() {
     return type;
+  }
+
+  public long getDuration() {
+    return duration;
+  }
+
+  public void setStart(long start) {
+    this.start = start;
   }
 
   public long getStart() {

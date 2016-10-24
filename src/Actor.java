@@ -184,16 +184,41 @@ public abstract class Actor implements Runnable {
   /********************/
 
   /**
-  * Adds a Task to the to-do list and keeps the list sorted.
+  * Adds a task and automatically tries to reschedule 
+  * it at the next available time
   */
   protected boolean addTask(Task task) {
-    if (checkConflict(task)) {
-      return false;
-    }
+    return addTask(task, true);
+  }
 
-    todoList.add(task);
-    todoList.sort(Task.compare());
-    return true;
+  /**
+  * Adds a Task to the to-do list and keeps the list sorted.
+  * @param task - the task to add
+  * @param shedualNext - whether to schedule the task at next available time
+  **/
+  protected boolean addTask(Task task, boolean scheduleNext) {
+    boolean conflict;
+    for (int i = 0; i < todoList.size(); i++) {
+      conflict = checkConflict(task);
+
+      if (conflict) {
+        //if conflict and no reschedule set
+        if (!scheduleNext) break; 
+
+        //Gets the next task, and checks when it ends
+        Task t = todoList.get(i);
+        long newStart = t.getStart() + t.getDuration();
+        //Set the new task's start to immediately after task
+        task.setStart(newStart + 1);
+      }
+      //Schedules the task
+      else {
+        todoList.add(task);
+        todoList.sort(Task.compare());
+        return true;
+      }
+    }
+    return false;
   }
 
 
