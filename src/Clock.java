@@ -5,6 +5,8 @@ public class Clock {
   private long startTime;
   private boolean started;
   
+  private final int CONVERSION_RATE = 10;
+  
   /** Constructor **/
   public Clock() {
     started = false;
@@ -48,8 +50,7 @@ public class Clock {
   * Converts minutes into the equivilent time in model
   **/
   public long convertMinutes(int minutes) {
-    //TODO
-    return (long) 0;
+    return minutes * CONVERSION_RATE;
   }
 
 
@@ -57,8 +58,8 @@ public class Clock {
   * Converts a period of the model's time scale to corrisponding minutes
   **/
   public int convertModelTime(long time) {
-    //TODO
-    return 0;
+    //May lose time due to integer division.
+    return (int) (time / CONVERSION_RATE); 
   }
 
 
@@ -67,10 +68,8 @@ public class Clock {
   * example: noon is 720 minutes
   **/
   public long convertTimeOfDay(int minutes) {
-    //TODO
-    //offset = minutes + math
-    //return startTime + offset
-    return (long) 0;
+    long offset = minutes - 480;
+    return offset;
   }
 
   /**
@@ -79,7 +78,7 @@ public class Clock {
   * @return The current time in a printable string form.
   */
   public String getPrintableTime() { 
-    long minutes = getTimePassedMillis()/10;
+    long minutes = getTimePassedMillis() / CONVERSION_RATE;
     long hours = minutes / 60 + 8;
     minutes = minutes % 60;
 
