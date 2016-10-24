@@ -27,9 +27,27 @@ public abstract class Actor implements Runnable {
 
 
   /** Abstract Methods **/
-  public abstract void run();
 
   protected abstract void startDay();
+
+  protected abstract void work();
+
+
+  /**
+  * Actor starts the day
+  * Works or does tasks until its time to leave
+  **/
+  public void run() {
+   startDay();
+
+   while (!leave) {
+     //Checks to see if has a task
+     //If doesn't, works for a bit
+     if (!nextTask()) {
+       work();
+     }
+   }
+  }
 
 
   /**
@@ -51,7 +69,7 @@ public abstract class Actor implements Runnable {
     addTask(new Task("Meeting", clock.convertTimeOfDay(time), clock.convertMinutes(duration)) {
         @Override
         public void performTask() {
-          outputAction(name + " went to meeting");
+          outputAction(name + " went to a meeting.");
           busy(duration);
         }
       }
@@ -66,7 +84,7 @@ public abstract class Actor implements Runnable {
     addTask(new Task("Lunch", clock.convertTimeOfDay(time), clock.convertMinutes(duration)) {
         @Override
         public void performTask() {
-          outputAction(name + " went to lunch");
+          outputAction(name + " went to lunch.");
           busy(duration);
         }
       }
@@ -82,7 +100,7 @@ public abstract class Actor implements Runnable {
     addTask(new Task("Meeting", clock.convertTimeOfDay(600), clock.convertMinutes(15)) {
         @Override
         public void performTask() {
-          outputAction(name + " arrived to the end of day meeting");
+          outputAction(name + " arrived to the end of day meeting.");
           //Wait for everyone to arrive
           CountDownLatch arrive = room.arriveFinal();
           try { arrive.await(); } 
@@ -101,7 +119,7 @@ public abstract class Actor implements Runnable {
     addTask(new Task("Leave", clock.convertTimeOfDay(time)) {
         @Override
         public void performTask() {
-          outputAction(name + " went home");
+          outputAction(name + " left the office.");
           leave = true;
         }
       }
@@ -131,16 +149,17 @@ public abstract class Actor implements Runnable {
   * @return Whether a task was completed
   */
   protected boolean nextTask() {
-    if(todoList.isEmpty()) {
+    if (todoList.isEmpty()) {
       return false;
     }
 
     Task t = todoList.get(0);
-    if(t.getStart() < clock.getTimePassedMillis()) {
+    if (t.getStart() < clock.getTimePassedMillis()) {
       t.performTask();
       todoList.remove(t);
       return true;
-    } else {
+    } 
+    else {
       return false;
     }
   }

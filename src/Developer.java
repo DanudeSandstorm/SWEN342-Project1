@@ -1,25 +1,31 @@
 package src;
 
 public class Developer extends Actor {
-	
-	public Developer(String name, Clock clock, ConferenceRoom room) {
-    	super(name, clock, room);
-	}
+  
+  public Developer(String name, Clock clock, ConferenceRoom room) {
+      super(name, clock, room);
+  }
 
-	public void run() {
-		//TODO
-		//offset day start random up to 30 minutes
-		startDay();
-		//additional schedule
-		//TODO
-	}
+  @Override
+  protected void startDay() {
+    //TODO!
+  }
 
-	private void question() {
-		//TODO!
-	}
+  /**
+  * Randomly assigns a duration at which to perform work
+  **/
+  @Override
+  protected void work() {
+    //TODO
+    //Chance to have a question
+    //Or
+    //Work for random amount of time
+    int duration = 0;
+    busy(duration);
+  }
 
-	protected void startDay() {
-		//TODO!
-	}
+  private void question() {
+    //TODO!
+  }
 
 }

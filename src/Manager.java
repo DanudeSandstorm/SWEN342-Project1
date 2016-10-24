@@ -12,20 +12,11 @@ public class Manager extends Actor {
     dailyMeeting = new CountDownLatch(4); // 3 Leads + Self
   }
 
-  public void run() {
-    startDay();
-
-    //TODO
-    //Main execution loop
-    while (!leave) {
-
-    }
-  }
-
   /**
   * Begin the day!
   * Gets start time and sets up shedual
   **/
+  @Override
   protected void startDay() {
     startTime = clock.startDay();
     //Daily Standup
@@ -43,6 +34,18 @@ public class Manager extends Actor {
   }
 
 
+  /**
+  * Randomly assigns a duration at which to perform work
+  **/
+  @Override
+  protected void work() {
+    //TODO
+    //Work for random amount of time
+    int duration = 0;
+    busy(duration);
+  }
+
+
   protected void scheduleDailyPlanningMeeting() {
     //Meeting at 8:00 am
     addTask(new Task("Meeting", clock.convertTimeOfDay(480), clock.convertMinutes(15)) {
@@ -54,7 +57,7 @@ public class Manager extends Actor {
           try { arrive.await(); } 
           catch (InterruptedException e) {}
 
-          outputAction(name + " has started the daily planning meeting.")
+          outputAction(name + " has started the daily planning meeting.");
           busy(15);
         }
       }
@@ -70,6 +73,7 @@ public class Manager extends Actor {
 
   public synchronized void askQuestion() {
     //TODO!
+    //creates a task for a question
   }
 
 }
