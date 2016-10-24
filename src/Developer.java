@@ -4,7 +4,7 @@ public class Developer extends Actor {
 
   protected TeamLead lead;
   protected int waiting;
-  protected boolean answered;
+  protected volatile boolean answered;
   
   public Developer(String name, Clock clock, ConferenceRoom room, TeamLead lead) {
       super(name, clock, room);
