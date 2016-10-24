@@ -7,26 +7,29 @@ import java.util.concurrent.*;
 
 public abstract class Actor implements Runnable {
 
-  private final List<Task> todoList;
-  protected Clock clock;
-  protected ConferenceRoom room;
-  protected String name;
-  protected long startTime;
-  protected volatile boolean leave; //should the person leave work?
-  protected int working, lunch, meetings; //stats
+  private final List<Task>  todoList;
+  protected ConferenceRoom  room;
+  protected FileWriter      fw;
+  protected Clock           clock;
+  protected String          name;
+  protected long            startTime;
+  //should the person leave work?
+  protected volatile boolean leave;
+  //stats
+  protected int working, lunch, meetings;
 
 
   public Actor(String name, Clock clock, ConferenceRoom room) {
-    this.name = name;
+    todoList = new ArrayList<Task>();
+    fw       = FileWriter.getInstance();
+    this.name  = name;
     this.clock = clock;
-    this.room = room;
-    leave = false;
-    working = 0;
-    lunch = 0;
+    this.room  = room;
+    leave    = false;
+    working  = 0;
+    lunch    = 0;
     meetings = 0;
 
-    //Instantiate to-do list
-    todoList = new ArrayList<Task>();
   }
 
   /**********************/
@@ -248,7 +251,7 @@ public abstract class Actor implements Runnable {
     clock.getPrintableTime();
     //TODO!
     //save timestap: action
-    writeToFile(text);
+    fw.write(text);
   }
 
 
@@ -262,7 +265,7 @@ public abstract class Actor implements Runnable {
     //Name:
     //for each action
       //string = "Action - Amount"
-    writeToFile(text);
+    fw.write(text);
   }
 
 
@@ -278,15 +281,7 @@ public abstract class Actor implements Runnable {
     String text = "";
     //TODO
     //string = "Action - Amount"
-    writeToFile(text);
+    fw.write(text);
   }
 
-
-
-  /**
-  * Synchronized method that writes a string to the file buffer
-  **/
-  private synchronized void writeToFile(String text) {
-    //TODO
-  }
 }
