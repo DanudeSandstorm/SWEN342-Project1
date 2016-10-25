@@ -4,18 +4,22 @@ public class Developer extends Actor {
 
   protected TeamLead lead;
   protected int waiting;
+  protected long lastQuestion;
   protected volatile boolean answered;
   
   public Developer(String name, Clock clock, ConferenceRoom room, TeamLead lead) {
       super(name, clock, room);
       this.lead = lead;
       waiting = 0;
+      lastQuestion = 0;
       answered = false;
   }
 
   @Override
   protected void startDay() {
     //TODO!
+    //Schedualing lunch needs to not exceed the length of day
+    //(user can't leave after 5) 
   }
 
   /**
@@ -23,15 +27,32 @@ public class Developer extends Actor {
   **/
   @Override
   protected void doingWork() {
+    boolean question = false;
     //TODO
     //Chance to have a question
+    //Exponential decay from last question
+    //0 means no questions have been asked
     //Or
     //Work for random amount of time
-      //question
+    if (question) {
+      lastQuestion = clock.getTimePassedMillis();
       question();
+    }
+    else {
+      //TODO
+      //Random work duration
       //work
       int duration = 0;
       doingWork(duration);
+    }
+  }
+
+
+  /**
+  * @return the developer's team lead
+  */
+  protected TeamLead getLead() {
+    return lead;
   }
 
 
@@ -49,6 +70,8 @@ public class Developer extends Actor {
   **/
   private void scheduleDailyStandup() {
     //TODO
+    //In the daily standup task, the developer must keep "arriving"
+    //at the conference room until their team lead is its owner
   }
 
 

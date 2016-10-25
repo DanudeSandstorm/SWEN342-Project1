@@ -35,6 +35,14 @@ public class TeamLead extends Actor {
 
 
   /**
+  * @return the team lead's manager
+  */
+  protected Manager getManager() {
+    return manager;
+  }
+
+
+  /**
   * Prints stats
   **/
   @Override
