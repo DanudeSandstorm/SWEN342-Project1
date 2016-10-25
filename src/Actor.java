@@ -9,7 +9,6 @@ public abstract class Actor implements Runnable {
 
   private final List<Task>  todoList;
   protected ConferenceRoom  room;
-  protected FileWriter      fw;
   protected Clock           clock;
   protected String          name;
   protected long            startTime;
@@ -21,7 +20,6 @@ public abstract class Actor implements Runnable {
 
   public Actor(String name, Clock clock, ConferenceRoom room) {
     todoList = new ArrayList<Task>();
-    fw       = FileWriter.getInstance();
     this.name  = name;
     this.clock = clock;
     this.room  = room;
@@ -276,7 +274,7 @@ public abstract class Actor implements Runnable {
     clock.getPrintableTime();
     //TODO!
     //save timestap: action
-    fw.write(text);
+    FileWriter.writeLine(text);
   }
 
 
@@ -290,7 +288,7 @@ public abstract class Actor implements Runnable {
     //Name:
     //for each action
       //string = "Action - Amount"
-    fw.write(text);
+    FileWriter.writeLine(text);
   }
 
 
@@ -306,7 +304,7 @@ public abstract class Actor implements Runnable {
     String text = "";
     //TODO
     //string = "Action - Amount"
-    fw.write(text);
+    FileWriter.writeLine(text);
   }
 
 }
