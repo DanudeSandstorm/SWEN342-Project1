@@ -68,7 +68,7 @@ public class Clock {
   * example: noon is 720 minutes
   **/
   public long convertTimeOfDay(int minutes) {
-    long offset = minutes - 480;
+    long offset = convertMinutes(minutes - 480); //offset is 8:00 am
     return offset;
   }
 
