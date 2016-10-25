@@ -1,25 +1,38 @@
 package src;
 
+import java.util.concurrent.BlockingQueue;
+import java.io.BufferedWriter;
+
 public class FileWriter {
 
-	private static final FileWriter instance = new FileWriter();
+  private static FileWriter instance = new FileWriter();
+  private static final String DEFAULT_FILENAME = "out.txt"; //Subject to change
 
-	protected FileWriter() {
-	   // Exists only to defeat instantiation.
-	}
+/*
+  private final BlockingQueue<String> toWrite;
+  private final BufferedWriter writer;
+  private volatile boolean finished;
+  private final Thread writeThread;
+*/
 
-	public static FileWriter getInstance() {
-	   return instance;
-	}
+  private FileWriter() {
+//    toWrite = new BlockingQueue();
+//    writer = new BufferedWriter(new java.io.FileWriter(DEFAULT_FILENAME));
+//    finished = false;
+  }
 
-	/**
-	* Synchronized method that writes a string to the file buffer
-	* Adds request to queue
-	**/
-	public synchronized void write(String text) {
-	  //TODO
-	  //Create lock
-	  //Add request to queue
-	}
+  //Dummy for compilations reasons, will be changed later.
+  public static FileWriter getInstance() {return null;}
+
+  /**
+   * Synchronized method that writes a string to the file buffer
+   * Adds request to queue
+   **/
+  public static void write(String text) {
+//    toWrite.add(text); //Safety handled by BlockingQueue
+  }
+
+  
+  
 
 }
