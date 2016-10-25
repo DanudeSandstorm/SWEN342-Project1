@@ -270,9 +270,9 @@ public abstract class Actor implements Runnable {
   * Saves an action and the time it occured to a file
   **/
   protected void outputAction(String action) {
-    String text = "";
-    clock.getPrintableTime();
-    //TODO!
+    String time;
+      time = clock.getPrintableTime();
+    String text = time + " " + action;
     //save timestap: action
     FileWriter.writeLine(text);
   }
@@ -283,11 +283,14 @@ public abstract class Actor implements Runnable {
   * (a) working, (b) at lunch, (c) in meetings
   **/
   protected void printStats(int a, int b, int c) {
-    String text = "";
-    //TODO
-    //Name:
-    //for each action
-      //string = "Action - Amount"
+    /*Format:
+      Name:
+        Working - a
+        Lunch   - b
+        Meeting - c
+      */
+    
+    String text = this.getName() + "\n" + "  Working - " + a + "\n" + "  Lunch   - " + b + "\n"+ "  Meeting - " + c;
     FileWriter.writeLine(text);
   }
 
@@ -301,9 +304,7 @@ public abstract class Actor implements Runnable {
   protected void printStats(int a, int b, int c, int d) {
     printStats(a, b, c);
 
-    String text = "";
-    //TODO
-    //string = "Action - Amount"
+    String text = "  Waiting - " + d;
     FileWriter.writeLine(text);
   }
 
