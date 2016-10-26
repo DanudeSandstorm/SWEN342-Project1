@@ -56,7 +56,11 @@ public class FileWriter {
       }
     }
 
-    writer.close();
+    try {
+      writer.close();
+    } catch(IOException e) {
+      e.printStackTrace();
+    }
   }
   
 
