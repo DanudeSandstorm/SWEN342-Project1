@@ -13,8 +13,9 @@ public class Manager extends Actor {
   }
 
   /**
-  * Begin the day!
-  * Gets start time and sets up shedual
+  * Begin the day.
+  * Wait for the clock to notify that the day has begun then schedule tasks that
+  * need to be done and prepare to do work.
   **/
   @Override
   protected void startDay() {

@@ -34,7 +34,7 @@ public class Main {
       es.submit(actors.get(i));
     }
 
-    //Wait for all threads to be started before starting day
+    //Wait for all threads to be started before starting the day
     clock.startClock();
 
   }
