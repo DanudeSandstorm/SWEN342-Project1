@@ -141,7 +141,7 @@ public abstract class Actor extends Thread {
   **/
   protected void finalMeeting() {
     //Meeting at 4:00pm
-    addTask(new Task("Meeting", clock.convertTimeOfDay(600), clock.convertMinutes(15)) {
+    addTask(new Task("Meeting", clock.convertTimeOfDay(960), clock.convertMinutes(15)) {
         @Override
         public void performTask() {
           outputAction(name + " arrived to the end of day meeting.");
