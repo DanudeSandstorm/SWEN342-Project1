@@ -20,6 +20,8 @@ public class TeamLead extends Actor {
   **/
   protected void startDay() {
     //TODO!
+    //Put here for testing the Manager
+    manager.dailyStandup();
   }
 
   /**
@@ -57,11 +59,8 @@ public class TeamLead extends Actor {
         @Override
         public void performTask() {
           outputAction(name + " arrived to the daily planning meeting.");
-          //Wait for everyone to arrive
-          CountDownLatch arrive = manager.dailyStandup();
-          try { arrive.await(); } 
-          catch (InterruptedException e) {}
-
+          //Show up at Manager's office and wait for the standup.
+          manager.dailyStandup();
           busy(15);
         }
       }

@@ -191,7 +191,8 @@ public abstract class Actor extends Thread {
   **/
   protected boolean addTask(Task task, boolean scheduleNext) {
     boolean conflict;
-    for (int i = 0; i < todoList.size(); i++) {
+    //Disabled Auto conflict resolution for testing purposes.
+    /*for (int i = 0; i < todoList.size(); i++) {
       conflict = checkConflict(task);
 
       if (conflict) {
@@ -205,13 +206,13 @@ public abstract class Actor extends Thread {
         task.setStart(newStart + 1);
       }
       //Schedules the task
-      else {
+      else {*/
         todoList.add(task);
         todoList.sort(Task.compare());
         return true;
-      }
-    }
-    return false;
+      //}
+    //}
+    //return false;
   }
 
 
@@ -270,6 +271,9 @@ public abstract class Actor extends Thread {
     String text = time + " " + action;
     //save timestap: action
     FileWriter.writeLine(text);
+
+    //Temporarily Output to Standard Out
+    System.out.println(text);
   }
 
 

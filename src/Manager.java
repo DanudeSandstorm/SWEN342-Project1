@@ -4,12 +4,13 @@ import java.util.concurrent.*;
 
 public class Manager extends Actor {
 
+  private final int MAXIMUM_WORK_TIME = 10;
 
   private final CountDownLatch dailyMeeting;
 
   public Manager(String name, Clock clock, ConferenceRoom room) {
     super(name, clock, room);
-    dailyMeeting = new CountDownLatch(4); // 3 Leads + Self
+    dailyMeeting = new CountDownLatch(3); // 3 Leads
   }
 
   /**
@@ -40,10 +41,7 @@ public class Manager extends Actor {
   **/
   @Override
   protected void doingWork() {
-    //TODO
-    //Work for random amount of time
-    int duration = 0;
-    doingWork(duration);
+    doingWork(MAXIMUM_WORK_TIME);
   }
 
 
@@ -61,23 +59,38 @@ public class Manager extends Actor {
     addTask(new Task("Meeting", clock.convertTimeOfDay(480), clock.convertMinutes(15)) {
         @Override
         public void performTask() {
-          outputAction(name + " is waiting for team leads to arrive.");
-          //Wait for everyone to arrive
-          CountDownLatch arrive = dailyStandup();
-          try { arrive.await(); } 
-          catch (InterruptedException e) {}
-
-          outputAction(name + " has started the daily planning meeting.");
-          inMeeting(15);
+          awaitStandup();
         }
       }
     );
   }
 
 
-  public synchronized CountDownLatch dailyStandup() {
+  /**
+  * The Manager waits for all the team leads to arrive for the standup.
+  */
+  private void awaitStandup() {
+    outputAction(name + " is waiting for team leads to arrive.");
+    //Wait for everyone to arrive
+    try { dailyMeeting.await(); } 
+    catch (InterruptedException e) {}
+
+    synchronized(this) {
+      outputAction(name + " has started the daily planning meeting.");
+      inMeeting(15);
+      this.notifyAll();
+    }
+  }
+
+  /**
+  * The team leads arrive at the standup and wait for the meeting to end.
+  */
+  public synchronized void dailyStandup() {
     dailyMeeting.countDown();
-    return dailyMeeting;
+    try {
+      this.wait();
+    } catch(InterruptedException e) {}
+    
   }
 
 
@@ -85,5 +98,6 @@ public class Manager extends Actor {
     //TODO!
     //creates a task for a question
   }
+
 
 }
