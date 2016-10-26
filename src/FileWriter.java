@@ -55,6 +55,8 @@ public class FileWriter {
         }
       }
     }
+
+    writer.close();
   }
   
 

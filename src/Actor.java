@@ -76,7 +76,8 @@ public abstract class Actor implements Runnable {
 
   /**
   * Thread sleeps for a specified amount of time
-  * @param minutes - amount of minutes to sleep
+  * 
+  * @param minutes - number of simulated minutes to sleep
   **/
   protected void busy(int duration) {
     try { 
