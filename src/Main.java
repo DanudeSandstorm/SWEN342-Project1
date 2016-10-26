@@ -30,13 +30,20 @@ public class Main {
     }
 
     /** Run threads **/
-    for (int i = 0; i < actors.size(); i++)
-    {
-      es.submit(actors.get(i));
+    for(Actor act : actors) {
+      act.start();
     }
 
     //Wait for all threads to be started before starting the day
     clock.startClock();
 
+    //Wait for all Threads to finish then clean up.
+    for(Actor act : actors) {
+      try {
+        act.join();
+      } catch(InterruptedException e) {e.printStackTrace();}
+    }
+    
+    FileWriter.terminateWriter();
   }
 }
