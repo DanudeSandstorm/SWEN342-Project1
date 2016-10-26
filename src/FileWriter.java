@@ -56,7 +56,11 @@ public class FileWriter {
       }
     }
 
-    writer.close();
+    try {
+      writer.close();
+    } catch(IOException e) {
+      e.printStackTrace();
+    }
   }
   
 
@@ -67,4 +71,13 @@ public class FileWriter {
   public static void terminateWriter() {
     finished = true;
   }
+
+
+  //Only used for testing the FileWriter Class
+  public static void main(String[] args) {
+    writeLine("Testing Testing");
+    writeLine("1 2 3 4");
+    terminateWriter();
+  }
+
 }

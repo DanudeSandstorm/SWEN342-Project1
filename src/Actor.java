@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.concurrent.*;
 
-public abstract class Actor implements Runnable {
+public abstract class Actor extends Thread {
 
   private final List<Task>  todoList;
   protected ConferenceRoom  room;
@@ -19,6 +19,7 @@ public abstract class Actor implements Runnable {
 
 
   public Actor(String name, Clock clock, ConferenceRoom room) {
+    super(name);
     todoList = new ArrayList<Task>();
     this.name  = name;
     this.clock = clock;
@@ -62,13 +63,6 @@ public abstract class Actor implements Runnable {
    printStats();
   }
 
-
-  /**
-  * @return the name of the actor
-  **/
-  public String getName() {
-    return name;
-  }
 
   /********************/
   /***    Sleep     ***/
