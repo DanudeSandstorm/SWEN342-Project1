@@ -6,11 +6,12 @@ public class ConferenceRoom {
 
   private final CountDownLatch finalMeeting;
   private CyclicBarrier standup;
-  private TeamLead owner = null;
+  private TeamLead owner;
 
 
   public ConferenceRoom() {
     finalMeeting = new CountDownLatch(13);
+    owner = null;
   }
 
 
@@ -27,7 +28,7 @@ public class ConferenceRoom {
       owner = lead;
       standup = new CyclicBarrier(4);
 
-    return arrive(lead);
+    return standup;
   }
 
 
@@ -35,13 +36,12 @@ public class ConferenceRoom {
   * @return a CyclicBarrier for the actor to wait on, 
   * or null if the room is reserved
   */
-  public synchronized CyclicBarrier arrive(Actor actor) {
-    if ((actor instanceof TeamLead && actor == owner) ||
-       (actor instanceof Developer && ((Developer) actor).getLead() == owner)) {
+  public synchronized CyclicBarrier arrive(Developer d) {
+    if(d.getLead().equals(standup)) {
       return standup;
+    } else {
+      return null;
     }
-
-    return null;
   }
 
   public synchronized CountDownLatch arriveFinal() {

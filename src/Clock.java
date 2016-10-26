@@ -17,7 +17,7 @@ public class Clock {
   * Allows the clock to be set to start at the same time as the Actor threads.
   * Uses system time as the analogue for the start of the work day.
   **/
-  public void startClock() {
+  public synchronized void startClock() {
     startTime = System.currentTimeMillis();
     started = true;
     notifyAll(); //Day starts
