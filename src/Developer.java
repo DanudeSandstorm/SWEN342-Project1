@@ -28,21 +28,19 @@ public class Developer extends Actor {
   @Override
   protected void doingWork() {
     boolean question = false;
-    //TODO
-    //Chance to have a question
-    //Exponential decay from last question
-    //0 means no questions have been asked
-    //Or
-    //Work for random amount of time
+    
+    //As time goes on, the chances that a developer asks a question increases
+    if (Math.random() < (1 - (Math.exp(-(clock.getTimePassedMillis() - lastQuestion))))){
+      question = true;
+    }
+    
     if (question) {
       lastQuestion = clock.getTimePassedMillis();
       question();
     }
     else {
-      //TODO
-      //Random work duration
-      //work
-      int duration = 0;
+      //Work for a random amount of time between 0 and 60 minutes
+      int duration = (int)(Math.random() * clock.convertMinutes(60));
       doingWork(duration);
     }
   }
@@ -91,7 +89,7 @@ public class Developer extends Actor {
   }
 
   /**
-  * @param duration- the emount of time spent (waiting on the manager)
+  * @param duration- the amount of time spent (waiting on the manager)
   * in minutes or 0 if the lead was able to answer the question
   **/
   public void giveAnswer(int duration) {
