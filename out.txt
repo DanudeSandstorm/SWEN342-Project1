@@ -1,0 +1,360 @@
+Manager goes to morning meeting.
+Team Lead 0 arrives at work.
+Team Lead 0 goes to morning meeting.
+Developer 2:1 arrives for work.
+Developer 2:1 tries to go to daily standup.
+Developer 0:0 arrives for work.
+Developer 0:0 tries to go to daily standup.
+Developer 0:2 arrives for work.
+Developer 0:2 tries to go to daily standup.
+Developer 0:1 arrives for work.
+Developer 0:1 tries to go to daily standup.
+Developer 1:0 arrives for work.
+Developer 1:0 tries to go to daily standup.
+Developer 2:2 arrives for work.
+Developer 2:2 tries to go to daily standup.
+Developer 1:1 arrives for work.
+Developer 1:1 tries to go to daily standup.
+Developer 2:0 arrives for work.
+Developer 2:0 tries to go to daily standup.
+Team Lead 1 arrives at work.
+Team Lead 1 goes to morning meeting.
+Developer 1:2 arrives for work.
+Developer 1:2 tries to go to daily standup.
+Team Lead 2 arrives at work.
+Team Lead 2 goes to morning meeting.
+Team Lead 2 finishes morning meeting.
+Manager finishes morning meeting.
+Team Lead 0 finishes morning meeting.
+Team Lead 0 tries to start standUp.
+Team Lead 2 tries to start standUp.
+Team Lead 1 finishes morning meeting.
+Team Lead 1 tries to start standUp.
+Developer 0:0 finishes daily standup.
+Team Lead 0 finishes standUp.
+Developer 0:2 finishes daily standup.
+Developer 0:1 finishes daily standup.
+Developer 0:2 asks TeamLead a question..
+Team Lead 0 answers a question immediately.
+Developer 0:0 asks TeamLead a question..
+Team Lead 0 answers a question immediately.
+Developer 0:2 asks TeamLead a question..
+Team Lead 0 asks a manager a question.
+Developer 0:1 asks TeamLead a question..
+Developer 0:0 asks TeamLead a question..
+Developer 1:1 finishes daily standup.
+Team Lead 1 finishes standUp.
+Developer 1:0 finishes daily standup.
+Developer 1:2 finishes daily standup.
+Developer 1:2 asks TeamLead a question..
+Team Lead 1 asks a manager a question.
+Developer 1:1 asks TeamLead a question..
+Team Lead 0 answers a question immediately.
+Team Lead 0 asks a manager a question.
+Developer 0:1 asks TeamLead a question..
+Developer 0:2 asks TeamLead a question..
+Developer 1:0 asks TeamLead a question..
+Team Lead 1 answers a question immediately.
+Team Lead 1 answers a question immediately.
+Developer 2:0 finishes daily standup.
+Team Lead 2 finishes standUp.
+Developer 1:0 asks TeamLead a question..
+Developer 2:1 finishes daily standup.
+Developer 2:2 finishes daily standup.
+Team Lead 1 asks a manager a question.
+Developer 1:1 asks TeamLead a question..
+Developer 2:1 asks TeamLead a question..
+Team Lead 2 answers a question immediately.
+Developer 2:1 asks TeamLead a question..
+Team Lead 2 asks a manager a question.
+Developer 2:2 asks TeamLead a question..
+Team Lead 0 answers a question immediately.
+Team Lead 0 asks a manager a question.
+Developer 1:2 asks TeamLead a question..
+Developer 0:1 asks TeamLead a question..
+Developer 2:0 asks TeamLead a question..
+Developer 0:0 asks TeamLead a question..
+Team Lead 1 asks a manager a question.
+Developer 1:0 asks TeamLead a question..
+Manager goes to 10AM meeting.
+Team Lead 2 asks a manager a question.
+Developer 2:1 asks TeamLead a question..
+Manager finishes 10AM meeting.
+Team Lead 0 asks a manager a question.
+Developer 0:2 asks TeamLead a question..
+Team Lead 1 answers a question immediately.
+Team Lead 1 asks a manager a question.
+Developer 1:2 asks TeamLead a question..
+Team Lead 2 asks a manager a question.
+Developer 2:2 asks TeamLead a question..
+Team Lead 0 asks a manager a question.
+Developer 1:1 asks TeamLead a question..
+Developer 0:1 asks TeamLead a question..
+Team Lead 1 asks a manager a question.
+Developer 1:0 asks TeamLead a question..
+Team Lead 2 asks a manager a question.
+Developer 2:0 asks TeamLead a question..
+Team Lead 0 answers a question immediately.
+Team Lead 0 asks a manager a question.
+Developer 0:2 asks TeamLead a question..
+Developer 0:0 asks TeamLead a question..
+Team Lead 1 answers a question immediately.
+Team Lead 1 answers a question immediately.
+Developer 1:1 asks TeamLead a question..
+Developer 1:0 asks TeamLead a question..
+Team Lead 1 answers a question immediately.
+Team Lead 1 answers a question immediately.
+Developer 1:2 asks TeamLead a question..
+Team Lead 1 answers a question immediately.
+Developer 1:1 asks TeamLead a question..
+Team Lead 1 asks a manager a question.
+Developer 1:0 asks TeamLead a question..
+Developer 1:2 asks TeamLead a question..
+Team Lead 2 answers a question immediately.
+Team Lead 2 answers a question immediately.
+Developer 2:1 asks TeamLead a question..
+Team Lead 2 answers a question immediately.
+Developer 2:2 asks TeamLead a question..
+Team Lead 2 answers a question immediately.
+Developer 2:1 asks TeamLead a question..
+Team Lead 2 asks a manager a question.
+Developer 2:0 asks TeamLead a question..
+Developer 2:2 asks TeamLead a question..
+Team Lead 0 asks a manager a question.
+Developer 0:1 asks TeamLead a question..
+Team Lead 1 answers a question immediately.
+Team Lead 1 answers a question immediately.
+Developer 1:1 asks TeamLead a question..
+Team Lead 1 answers a question immediately.
+Developer 1:0 asks TeamLead a question..
+Team Lead 1 answers a question immediately.
+Developer 1:0 asks TeamLead a question..
+Team Lead 1 asks a manager a question.
+Developer 1:2 asks TeamLead a question..
+Developer 1:1 asks TeamLead a question..
+Manager goes to 2PM meeting.
+Team Lead 2 answers a question immediately.
+Team Lead 2 asks a manager a question.
+Developer 2:1 asks TeamLead a question..
+Developer 2:0 asks TeamLead a question..
+Manager goes to 2PM meeting.
+Team Lead 0 asks a manager a question.
+Developer 0:2 asks TeamLead a question..
+Team Lead 1 answers a question immediately.
+Team Lead 1 answers a question immediately.
+Developer 1:0 asks TeamLead a question..
+Team Lead 1 asks a manager a question.
+Developer 1:2 asks TeamLead a question..
+Developer 1:1 asks TeamLead a question..
+Team Lead 2 asks a manager a question.
+Developer 2:2 asks TeamLead a question..
+Team Lead 0 answers a question immediately.
+Team Lead 0 asks a manager a question.
+Developer 0:0 asks TeamLead a question..
+Developer 0:1 asks TeamLead a question..
+Team Lead 1 answers a question immediately.
+Team Lead 1 answers a question immediately.
+Developer 1:0 asks TeamLead a question..
+Team Lead 1 asks a manager a question.
+Developer 1:2 asks TeamLead a question..
+Developer 1:1 goes to summary meeting.
+Developer 2:1 goes to summary meeting.
+Developer 2:0 was prevented from askinga question.
+Developer 2:0 goes to summary meeting.
+Developer 2:2 was prevented from askinga question.
+Developer 2:2 goes to summary meeting.
+Developer 0:2 was prevented from askinga question.
+Developer 0:2 goes to summary meeting.
+Developer 0:0 was prevented from askinga question.
+Developer 0:0 goes to summary meeting.
+Developer 0:1 was prevented from askinga question.
+Developer 0:1 goes to summary meeting.
+Developer 1:0 was prevented from askinga question.
+Developer 1:0 goes to summary meeting.
+Developer 1:2 was prevented from askinga question.
+Developer 1:2 goes to summary meeting.
+Manager goes to summary meeting.
+Team Lead 2 goes to summary meeting.
+Team Lead 0 goes to summary meeting.
+Team Lead 1 goes to summary meeting.
+Team Lead 1 finishes summary meeting.
+Team Lead 1 asks a manager a question.
+Developer 1:1 finishes summary meeting.
+Developer 2:1 finishes summary meeting.
+Developer 2:0 finishes summary meeting.
+Developer 2:2 finishes summary meeting.
+Developer 0:2 finishes summary meeting.
+Developer 0:0 finishes summary meeting.
+Developer 0:1 finishes summary meeting.
+Developer 1:0 finishes summary meeting.
+Developer 1:2 finishes summary meeting.
+Manager finishes summary meeting.
+Team Lead 2 finishes summary meeting.
+Team Lead 2 asks a manager a question.
+Team Lead 2 answers a question immediately.
+Team Lead 0 finishes summary meeting.
+Team Lead 0 asks a manager a question.
+Team Lead 0 asks a manager a question.
+Developer 1:2 asks TeamLead a question..
+Team Lead 1 asks a manager a question.
+Developer 1:2 was prevented from askinga question.
+Developer 2:2 asks TeamLead a question..
+Team Lead 2 answers a question immediately.
+Developer 1:2 asks TeamLead a question..
+Team Lead 1 asks a manager a question.
+Developer 1:2 was prevented from askinga question.
+Developer 2:1 asks TeamLead a question..
+Team Lead 2 answers a question immediately.
+Developer 0:2 asks TeamLead a question..
+Team Lead 0 answers a question immediately.
+Developer 2:0 asks TeamLead a question..
+Team Lead 2 asks a manager a question.
+Developer 2:0 was prevented from askinga question.
+Developer 1:0 asks TeamLead a question..
+Team Lead 1 answers a question immediately.
+Developer 2:1 asks TeamLead a question..
+Team Lead 2 answers a question immediately.
+Developer 2:0 asks TeamLead a question..
+Team Lead 2 asks a manager a question.
+Developer 2:0 was prevented from askinga question.
+Developer 0:1 asks TeamLead a question..
+Team Lead 0 asks a manager a question.
+Developer 0:1 was prevented from askinga question.
+Developer 1:1 asks TeamLead a question..
+Team Lead 1 answers a question immediately.
+Developer 1:0 asks TeamLead a question..
+Team Lead 1 asks a manager a question.
+Developer 1:0 was prevented from askinga question.
+Developer 0:0 asks TeamLead a question..
+Team Lead 0 answers a question immediately.
+Developer 0:1 asks TeamLead a question..
+Team Lead 0 asks a manager a question.
+Developer 0:1 was prevented from askinga question.
+Developer 2:1 asks TeamLead a question..
+Team Lead 2 answers a question immediately.
+Developer 1:1 asks TeamLead a question..
+Developer 1:0 asks TeamLead a question..
+Team Lead 1 answers a question immediately.
+Team Lead 1 answers a question immediately.
+Developer 1:1 asks TeamLead a question..
+Team Lead 1 asks a manager a question.
+Developer 1:1 was prevented from askinga question.
+Developer 1:0 asks TeamLead a question..
+Team Lead 1 asks a manager a question.
+Developer 1:0 was prevented from askinga question.
+Developer 0:0 asks TeamLead a question..
+Team Lead 0 answers a question immediately.
+Developer 0:0 asks TeamLead a question..
+Team Lead 0 answers a question immediately.
+Developer 2:0 asks TeamLead a question..
+Team Lead 2 answers a question immediately.
+Developer 1:2 asks TeamLead a question..
+Team Lead 1 asks a manager a question.
+Developer 1:2 was prevented from askinga question.
+Developer 0:1 asks TeamLead a question..
+Team Lead 0 asks a manager a question.
+Developer 0:1 was prevented from askinga question.
+Developer 1:0 asks TeamLead a question..
+Team Lead 1 asks a manager a question.
+Developer 1:0 was prevented from askinga question.
+Developer 0:1 asks TeamLead a question..
+Developer 0:0 asks TeamLead a question..
+Team Lead 0 asks a manager a question.
+Team Lead 0 answers a question immediately.
+Developer 0:1 was prevented from askinga question.
+Developer 1:2 asks TeamLead a question..
+Team Lead 1 asks a manager a question.
+Developer 1:2 was prevented from askinga question.
+Developer 2:1 asks TeamLead a question..
+Team Lead 2 answers a question immediately.
+Developer 2:0 asks TeamLead a question..
+Developer 0:0 asks TeamLead a question..
+Team Lead 2 asks a manager a question.
+Team Lead 0 asks a manager a question.
+Developer 2:0 was prevented from askinga question.
+Developer 0:0 was prevented from askinga question.
+Developer 2:1 asks TeamLead a question..
+Team Lead 2 answers a question immediately.
+Developer 0:1 asks TeamLead a question..
+Team Lead 0 answers a question immediately.
+Developer 2:1 asks TeamLead a question..
+Team Lead 2 answers a question immediately.
+Developer 2:1 asks TeamLead a question..
+Team Lead 2 answers a question immediately.
+Team Lead 0 goes home.
+Developer 1:0 asks TeamLead a question..
+Team Lead 1 asks a manager a question.
+Developer 1:0 was prevented from askinga question.
+Developer 1:2 asks TeamLead a question..
+Team Lead 1 asks a manager a question.
+Developer 1:2 was prevented from askinga question.
+Developer 0:2 asks TeamLead a question..
+Developer 0:2 was prevented from askinga question.
+Developer 2:2 asks TeamLead a question..
+Team Lead 2 asks a manager a question.
+Developer 2:2 was prevented from askinga question.
+Developer 0:2 asks TeamLead a question..
+Developer 0:2 was prevented from askinga question.
+Developer 1:2 asks TeamLead a question..
+Team Lead 1 asks a manager a question.
+Developer 1:2 was prevented from askinga question.
+Developer 2:0 asks TeamLead a question..
+Team Lead 2 answers a question immediately.
+Developer 1:1 asks TeamLead a question..
+Team Lead 1 asks a manager a question.
+Developer 1:1 was prevented from askinga question.
+Developer 1:2 asks TeamLead a question..
+Team Lead 1 asks a manager a question.
+Developer 1:2 was prevented from askinga question.
+Developer 1:2 asks TeamLead a question..
+Team Lead 1 answers a question immediately.
+Developer 1:0 asks TeamLead a question..
+Team Lead 1 asks a manager a question.
+Developer 1:0 was prevented from askinga question.
+Developer 1:1 asks TeamLead a question..
+Team Lead 1 answers a question immediately.
+Developer 2:1 goes home.
+Developer 0:1 goes home.
+Developer 0:2 asks TeamLead a question..
+Developer 0:2 was prevented from askinga question.
+Developer 0:2 asks TeamLead a question..
+Developer 0:2 was prevented from askinga question.
+Developer 2:2 asks TeamLead a question..
+Team Lead 2 asks a manager a question.
+Developer 2:2 was prevented from askinga question.
+Developer 0:0 asks TeamLead a question..
+Developer 0:0 was prevented from askinga question.
+Developer 1:1 asks TeamLead a question..
+Team Lead 1 asks a manager a question.
+Developer 1:1 was prevented from askinga question.
+Developer 1:1 asks TeamLead a question..
+Team Lead 1 answers a question immediately.
+Developer 1:0 asks TeamLead a question..
+Developer 0:0 asks TeamLead a question..
+Developer 0:0 was prevented from askinga question.
+Team Lead 1 answers a question immediately.
+Developer 2:2 goes home.
+Developer 1:2 asks TeamLead a question..
+Team Lead 1 answers a question immediately.
+Developer 0:2 asks TeamLead a question..
+Developer 0:2 was prevented from askinga question.
+Developer 0:2 goes home.
+Developer 1:2 asks TeamLead a question..
+Team Lead 1 asks a manager a question.
+Developer 1:2 was prevented from askinga question.
+Developer 1:0 asks TeamLead a question..
+Team Lead 1 asks a manager a question.
+Developer 1:0 was prevented from askinga question.
+Developer 1:0 asks TeamLead a question..
+Team Lead 1 answers a question immediately.
+Developer 1:0 asks TeamLead a question..
+Team Lead 1 answers a question immediately.
+Developer 1:1 asks TeamLead a question..
+Team Lead 1 answers a question immediately.
+Developer 1:0 goes home.
+Developer 1:1 goes home.
+Developer 2:0 goes home.
+Developer 0:0 goes home.
+Developer 1:2 goes home.
+Team Lead 1 goes home.
+Team Lead 2 goes home.
