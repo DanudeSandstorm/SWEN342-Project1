@@ -41,13 +41,14 @@ public class ConferenceRoom {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            
         }
         
         owner = lead;
-        standUp = new CyclicBarrier(members, new Runnable() {
-        public void run() {
-            try {
-                //Sleep for the duration of the meeting
+            standUp = new CyclicBarrier(members, new Runnable() {
+                public void run() {
+                    try {
+                        //Sleep for the duration of the meeting
                 Thread.sleep(150);
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -56,6 +57,7 @@ public class ConferenceRoom {
         
         });
         
+        
     }
       
     
@@ -63,10 +65,12 @@ public class ConferenceRoom {
     
     synchronized(this) {
         owner = null;
+        count = 0;
         this.notifyAll();
     }
   }
 
+  int count = 0;
 
   /**
   * Lets a team member arrive at the conference room.

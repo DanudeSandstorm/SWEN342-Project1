@@ -94,8 +94,12 @@ public class TeamLead extends Actor{
                     //50% chance of automatically answering
                     questionBuffer.poll();
                     if(Math.random() * 2 < 1) {
+                        printWithTime(getName() + " answers a question" +
+                                " immediately.");
                         answerBuffer.offer(0);
                     } else {
+                        printWithTime(getName() + " asks a manager a" +
+                                " question.");
                         answerBuffer.offer(manager.askQuestion());
                     }
                 } else {

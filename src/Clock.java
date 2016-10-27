@@ -4,6 +4,7 @@ public class Clock {
 
   private long startTime;
   private final int CONVERSION_RATE = 10;
+  boolean started;
 
   /**
   * Constructor sets the time to the current system time.
@@ -12,6 +13,7 @@ public class Clock {
   */
   public Clock() {
     startTime = System.currentTimeMillis();
+    started = false;
   }
 
 
@@ -22,6 +24,7 @@ public class Clock {
   public synchronized void startClock() {
     startTime = System.currentTimeMillis();
     this.notifyAll();
+    started = true;
   }
   
   
@@ -31,7 +34,9 @@ public class Clock {
    */
   public synchronized void awaitStart() {
       try {
-        this.wait();
+        if(!started) {
+            this.wait();
+        }
     } catch (InterruptedException e) {
         e.printStackTrace();
     }

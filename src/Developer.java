@@ -38,6 +38,7 @@ public class Developer extends Actor {
         //Wait Random time to simulate when they come in.
         busy((int)(Math.random() * clock.convertMinutes(30)));
         arrivalTime = clock.getTimePassedMillis();
+        printWithTime(getName() + " arrives for work.");
         
         //Find out how long lunch can be based on arrival time
         lunchLength = 30 + (int)(Math.random() * (30 - 
@@ -45,22 +46,26 @@ public class Developer extends Actor {
         
         //Go to daily Stand Up check every five minutes if the room is 
         //available No questions during this time.
+        printWithTime(getName() + " tries to go to daily standup.");
         while(!conferenceRoom.arrive(lead)) {
             busy(clock.convertMinutes(5));
         }
+        printWithTime(getName() + " finishes daily standup.");
         meetings += 15;
         
         //Idle until the meeting at 4PM
         idleUntil(clock.AbsoluteMinutes(16 * 60));
         
         //Go to end of day meeting
+        printWithTime(getName() + " goes to summary meeting.");
         conferenceRoom.arriveFinal();
         meetings += 15;
+        printWithTime(getName() + " finishes summary meeting.");
         
         //Idle until it's time to go home
         idleUntil(clock.convertSimulated((int)arrivalTime) + (8 * 60) + 
                 lunchLength);
-        
+        printWithTime(getName() + " goes home.");
     }
     
     protected void idleUntil(int relativeMinutes) {
