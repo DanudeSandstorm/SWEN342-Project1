@@ -88,6 +88,7 @@ public class TeamLead extends Actor{
                     busy(lunchLength);
                     lunch += lunchLength;
                 }
+                hasHadLunch = true;
             } else {
                 //Handle Questions
                 if(!questionBuffer.isEmpty()) {

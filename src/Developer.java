@@ -80,9 +80,11 @@ public class Developer extends Actor {
                     busy(lunchLength);
                     lunch += lunchLength;
                 }
+                hasHadLunch = true;
             } else {
                 //Check if they are asking a question
-                if(Math.random()*100 < 1) {
+                if(Math.random()*10 <= 1) {
+                    printWithTime(getName() + " asks TeamLead a question..");
                     waiting += lead.askQuestion(this);
                     //Does asking a question count as working?
                     //working += 10;
