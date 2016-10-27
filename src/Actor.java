@@ -1,81 +1,45 @@
 package src;
 
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
 
 public abstract class Actor extends Thread {
 
-  private final List<Task> todo = new ArrayList<Task>();
-  private Clock clock;
+  protected Clock clock;
+  protected ConferenceRoom conferenceRoom;
+  
+  //Shouldn't need to worry about concurrency, each thread only edits its own
+  //stats
+  private Map<String,Integer> stats = new HashMap<String,Integer>();
+  
+  public Actor(String name, Clock clock, ConferenceRoom conferenceRoom) {
+      super(name);
+      this.clock = clock;
+      this.conferenceRoom = conferenceRoom;
+  }
 
-  private final Comparator<Task> taskCompare = new Comparator<Task>() {
-    public int compare(Task a, Task b) {
-      return a.getStart() - b.getStart();
-    }
-  };
+  protected abstract void idleUntil(int relativeMinutes);
 
-
-  public Actor(Clock clock) {
-    this.clock = clock;
+  /* Utilities for all Actors */
+  
+  protected void addStat(String stat, int time) {
+      if(stats.containsKey(stat)) {
+          stats.replace(stat, stats.get(stat) + time);
+      } else {
+          stats.put(stat, time);
+      }
   }
   
-  /**
-  * Adds a Task to the to-do list and keeps the list sorted.
-  */
-  protected boolean addTask(Task task) {
-    if (checkConflict(task)) {
-      return false;
-    }
-
-    todo.add(task);
-    todo.sort(taskCompare);
-    return true;
-  }
-
-
-  /**
-  * 
-  * Checks whether the time is right to perform the next task and if it is
-  * poppes it off of the task list to perform.
-  *
-  * @return Whether a task was completed
-  */
-  protected boolean nextTask() {
-    if(todo.isEmpty()) {
-      return false;
-    }
-
-    Task t = todo.get(0);
-    if(t.getStart() < clock.getTimePassedMillis()) {
-      t.performTask();
-      todo.remove(t);
-      return true;
-    } else {
-      return false;
+  protected void busy(int sleepTime) {
+      try {
+        Thread.sleep(sleepTime);
+    } catch (InterruptedException e) {
+        e.printStackTrace();
     }
   }
-
-
-  /**
-  * Checks if the task will result in a conflict with the current schedule.
-  *
-  * @param task The task that may cause a conflict.
-  *
-  * @return true if there is a conflict, false otherwise.
-  */
-  protected boolean checkConflict(Task task) {
-    for(Task t : todo) {
-      if(t.conflicts(task)) {
-	return true;
-      }
-    }
-
-    return false;
-  }
-
-
+  
   protected void printWithTime(String text) {
     System.out.println(clock.getPrintableTime() + " " + text);
+    FileWriter.writeLine(text);
   }
 }

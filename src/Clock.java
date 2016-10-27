@@ -3,7 +3,7 @@ package src;
 public class Clock {
 
   private long startTime;
-  
+  private final int CONVERSION_RATE = 10;
 
   /**
   * Constructor sets the time to the current system time.
@@ -19,8 +19,40 @@ public class Clock {
   * Allows the clock to be set to start at the same time as the Actor threads.
   * Uses system time as the analogue for the start of the work day.
   */
-  public void startClock() {
+  public synchronized void startClock() {
     startTime = System.currentTimeMillis();
+    this.notifyAll();
+  }
+  
+  
+  /**
+   * Let's all of the actor threads wait for the clock to start before doing
+   * their daily activities.
+   */
+  public synchronized void awaitStart() {
+      try {
+        this.wait();
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    }
+  }
+  
+  /**
+   * Converts simulated minutes into real time.
+   * 
+   * @param minutes
+   * @return
+   */
+  public int convertMinutes(int minutes) {
+      return minutes * CONVERSION_RATE;
+  }
+  
+  public int convertSimulated(int sim) {
+      return sim / CONVERSION_RATE;
+  }
+  
+  public int AbsoluteMinutes(int minutes) {
+      return minutes - 480;
   }
 
 
